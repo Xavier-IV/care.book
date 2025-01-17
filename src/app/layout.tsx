@@ -1,7 +1,7 @@
-import "./globals.css";
+import { AuthKitProvider } from "@workos-inc/authkit-nextjs/components";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ButtonGroup } from "@/components/ButtonGroup";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +20,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-gray-100 min-h-screen flex items-center justify-center`}
       >
-        <main className="w-full max-w-md p-6">
-          <ButtonGroup />
-          {children}
-        </main>
+        <AuthKitProvider>
+          <main className="w-full max-w-md p-6">{children}</main>
+        </AuthKitProvider>
       </body>
     </html>
   );

@@ -1,13 +1,9 @@
-import Link from 'next/link'
-import { Card } from '@/components/ui/card'
-
-interface Branch {
-  id: string
-  name: string
-}
+import Link from "next/link";
+import { Card } from "@/components/ui/card";
+import { Tables } from "@/types/database.type";
 
 interface BranchListProps {
-  branches: Branch[]
+  branches: Tables<"branches">[];
 }
 
 export function BranchList({ branches }: BranchListProps) {
@@ -16,13 +12,15 @@ export function BranchList({ branches }: BranchListProps) {
       <ul className="divide-y divide-gray-200">
         {branches.map((branch) => (
           <li key={branch.id}>
-            <Link href={`/${branch.id}`} className="block px-4 py-3 hover:bg-gray-50 transition duration-150 ease-in-out">
+            <Link
+              href={`/home/${branch.id}`}
+              className="block px-4 py-3 hover:bg-gray-50 transition duration-150 ease-in-out"
+            >
               {branch.name}
             </Link>
           </li>
         ))}
       </ul>
     </Card>
-  )
+  );
 }
-

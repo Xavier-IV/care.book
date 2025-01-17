@@ -1,42 +1,32 @@
-"use client";
+import { redirect } from "next/navigation";
+import Link from "next/link";
+import {
+  getSignInUrl,
+  getSignUpUrl,
+  withAuth,
+} from "@workos-inc/authkit-nextjs";
 
-import { useState } from "react";
-import { BranchList } from "@/components/BranchList";
-import { Button } from "@/components/ui/button";
-import { AddBranchModal } from "@/components/AddBranchModal";
+export default async function HomePage() {
+  const { user } = await withAuth();
+  const signInUrl = await getSignInUrl();
+  const signUpUrl = await getSignUpUrl();
 
-const initialBranches = [
-  { id: "1", name: "Tadika Ceria Kuala Lumpur" },
-  { id: "2", name: "Tadika Pintar Petaling Jaya" },
-  { id: "3", name: "Tadika Cemerlang Subang Jaya" },
-];
-
-export default function Home() {
-  const [branches, setBranches] = useState(initialBranches);
-  const [showAddBranchModal, setShowAddBranchModal] = useState(false);
-
-  const handleAddBranch = (branchName: string) => {
-    const newBranch = {
-      id: (branches.length + 1).toString(),
-      name: branchName,
-    };
-    setBranches([...branches, newBranch]);
-    setShowAddBranchModal(false);
-  };
+  if (user) {
+    redirect("/home");
+  }
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold text-center mb-6">Tadika Branches</h1>
-      <BranchList branches={branches} />
-      <Button onClick={() => setShowAddBranchModal(true)} className="w-full">
-        Add New Branch
-      </Button>
-      {showAddBranchModal && (
-        <AddBranchModal
-          onClose={() => setShowAddBranchModal(false)}
-          onSubmit={handleAddBranch}
-        />
-      )}
+    <div className="text-center space-y-4">
+      <h1 className="text-2xl font-bold mb-6">Welcome to Tadika Management</h1>
+      <p>Please sign in or sign up to continue.</p>
+      <div className="space-x-4">
+        <Link href={signInUrl}>
+          <button className="btn-primary">Sign In</button>
+        </Link>
+        <Link href={signUpUrl}>
+          <button className="btn-primary">Sign Up</button>
+        </Link>
+      </div>
     </div>
   );
 }
