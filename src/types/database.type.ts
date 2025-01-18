@@ -39,6 +39,7 @@ export type Database = {
           guardian: string
           id: number
           name: string
+          uuid: string | null
         }
         Insert: {
           age: number
@@ -48,6 +49,7 @@ export type Database = {
           guardian: string
           id?: number
           name: string
+          uuid?: string | null
         }
         Update: {
           age?: number
@@ -57,6 +59,7 @@ export type Database = {
           guardian?: string
           id?: number
           name?: string
+          uuid?: string | null
         }
         Relationships: [
           {
