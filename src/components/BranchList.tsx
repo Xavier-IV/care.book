@@ -21,7 +21,7 @@ export function BranchList({ branches }: BranchListProps) {
         {branches.map((branch) => (
           <li key={branch.id}>
             <button
-              onClick={() => handleBranchClick(branch.id)}
+              onClick={() => handleBranchClick(branch.id.toString())}
               className="block w-full text-left px-4 py-3 hover:bg-gray-50 transition duration-150 ease-in-out"
             >
               {branch.name}
