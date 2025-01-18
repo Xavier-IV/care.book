@@ -2,17 +2,11 @@
 
 import { Separator } from "@/components/ui/separator";
 import { StudentList } from "./StudentList";
-
-interface Student {
-  id: number;
-  name: string;
-  age: number;
-  guardian: string;
-}
+import { Tables } from "@/types/database.type";
 
 interface StudentsLayerProps {
   branchName: string;
-  students: Student[];
+  students: Tables<"students">[];
 }
 
 export function StudentsLayer({ branchName, students }: StudentsLayerProps) {
