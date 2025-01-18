@@ -4,14 +4,15 @@ import { LanyardCard } from "./LanyardCard";
 export default async function StudentPage({
   params,
 }: {
-  params: { uuid: string };
+  params: Promise<{ uuid: string }>;
 }) {
   const supabase = await createClient();
+  const uuid = (await params).uuid;
 
   const { data: student, error } = await supabase
     .from("students")
     .select("name, age, guardian, branch_id, customer_id, branches(name)")
-    .eq("uuid", params.uuid)
+    .eq("uuid", uuid)
     .single();
 
   if (error || !student) {
