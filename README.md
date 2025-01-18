@@ -2,6 +2,12 @@
 
 **Care Book** is a Next.js-powered application designed for managing kindergarten branches, students, and their details. It integrates Supabase as the backend service for database management and authentication.
 
+
+
+https://github.com/user-attachments/assets/76052a5e-b346-4556-91ae-142391d89fe2
+
+
+
 ---
 
 ## Prerequisites
