@@ -14,9 +14,14 @@ export function StudentsLayer({ branchName, students }: StudentsLayerProps) {
     <div className="flex items-center justify-center w-full h-full bg-gray-200/50 backdrop-blur-md p-4">
       <div className="bg-gray-200 rounded-lg shadow-lg max-w-md w-full space-y-4">
         <div className="flex justify-between items-center p-6 pb-0">
-          <h2 className="text-xl font-bold text-gray-800">
-            {branchName} Students
-          </h2>
+          <div className="flex flex-col items-start max-w-[80%]">
+            <h2 className="text-xl font-bold text-gray-800 truncate w-full">
+              {branchName}
+            </h2>
+            <span className="text-sm text-gray-600 italic">
+              {students.length} total of students
+            </span>
+          </div>
           <button
             className="text-gray-500 hover:text-gray-700"
             onClick={() => history.back()}

@@ -53,7 +53,7 @@ export default async function HomePage({
 
   return (
     <div className="">
-      <h1 className="text-2xl font-bold text-center mb-6">Tadika Branches</h1>
+      <h1 className="text-2xl font-bold text-center mb-6">Branches</h1>
 
       {/* Branch List */}
       <div className={`transition ${branchId ? "blur-sm" : ""}`}>
