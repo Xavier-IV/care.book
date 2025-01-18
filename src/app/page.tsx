@@ -1,10 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import {
-  getSignInUrl,
-  getSignUpUrl,
-  withAuth,
-} from "@workos-inc/authkit-nextjs";
+import { getSignInUrl, withAuth } from "@workos-inc/authkit-nextjs";
 
 export default async function HomePage() {
   const { user } = await withAuth();
