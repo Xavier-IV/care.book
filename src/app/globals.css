@@ -70,3 +70,21 @@ body {
     @apply bg-background text-foreground;
   }
 }
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db #f3f4f6; /* Gray scrollbar with light background */
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #f3f4f6; /* Light background */
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d1d5db; /* Gray thumb */
+  border-radius: 8px;
+  border: 2px solid #f3f4f6; /* Matches background for spacing */
+}

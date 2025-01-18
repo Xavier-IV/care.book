@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Tables } from "@/types/database.type";
 
@@ -7,17 +9,23 @@ interface BranchListProps {
 }
 
 export function BranchList({ branches }: BranchListProps) {
+  const router = useRouter();
+
+  const handleBranchClick = (branchId: string) => {
+    router.push(`/home?branchId=${branchId}`);
+  };
+
   return (
     <Card className="overflow-hidden">
       <ul className="divide-y divide-gray-200">
         {branches.map((branch) => (
           <li key={branch.id}>
-            <Link
-              href={`/home/${branch.id}`}
-              className="block px-4 py-3 hover:bg-gray-50 transition duration-150 ease-in-out"
+            <button
+              onClick={() => handleBranchClick(branch.id)}
+              className="block w-full text-left px-4 py-3 hover:bg-gray-50 transition duration-150 ease-in-out"
             >
               {branch.name}
-            </Link>
+            </button>
           </li>
         ))}
       </ul>
