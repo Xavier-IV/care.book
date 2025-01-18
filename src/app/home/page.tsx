@@ -8,7 +8,7 @@ import { Tables } from "@/types/database.type";
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams: { branchId?: string };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const branchId = (await searchParams).branchId;
   const { user } = await withAuth();
