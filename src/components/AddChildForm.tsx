@@ -1,29 +1,29 @@
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Card } from '@/components/ui/card'
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card } from "@/components/ui/card";
 
 interface AddChildFormProps {
-  onClose: () => void
-  onSubmit: (childName: string, childAge: number, guardianName: string) => void
+  onClose: () => void;
+  onSubmit: (childName: string, childAge: number, guardianName: string) => void;
 }
 
 export function AddChildForm({ onClose, onSubmit }: AddChildFormProps) {
-  const [childName, setChildName] = useState('')
-  const [childAge, setChildAge] = useState('')
-  const [guardianName, setGuardianName] = useState('')
+  const [childName, setChildName] = useState("");
+  const [childAge, setChildAge] = useState("");
+  const [guardianName, setGuardianName] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    onSubmit(childName, parseInt(childAge), guardianName)
-  }
+    e.preventDefault();
+    onSubmit(childName, parseInt(childAge), guardianName);
+  };
 
   return (
     <Card className="p-4 mt-4">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <Label htmlFor="childName">Child's Name</Label>
+          <Label htmlFor="childName">Child&apos;s Name</Label>
           <Input
             id="childName"
             value={childName}
@@ -33,7 +33,7 @@ export function AddChildForm({ onClose, onSubmit }: AddChildFormProps) {
           />
         </div>
         <div>
-          <Label htmlFor="childAge">Child's Age</Label>
+          <Label htmlFor="childAge">Child&apos;s Age</Label>
           <Input
             id="childAge"
             type="number"
@@ -46,7 +46,7 @@ export function AddChildForm({ onClose, onSubmit }: AddChildFormProps) {
           />
         </div>
         <div>
-          <Label htmlFor="guardianName">Guardian's Name</Label>
+          <Label htmlFor="guardianName">Guardian&apos;s Name</Label>
           <Input
             id="guardianName"
             value={guardianName}
@@ -63,6 +63,5 @@ export function AddChildForm({ onClose, onSubmit }: AddChildFormProps) {
         </div>
       </form>
     </Card>
-  )
+  );
 }
-

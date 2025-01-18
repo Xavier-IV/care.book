@@ -3,7 +3,6 @@ import QRCode from "react-qr-code";
 
 interface LanyardCardProps {
   name: string;
-  age?: number;
   guardian: string;
   branch: string;
   customerId: string;
@@ -11,7 +10,6 @@ interface LanyardCardProps {
 
 export function LanyardCard({
   name,
-  age,
   guardian,
   branch,
   customerId,
