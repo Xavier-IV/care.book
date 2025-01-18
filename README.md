@@ -1,12 +1,12 @@
+<div align="center">
+
 # Care Book
 
-**Care Book** is a Next.js-powered application designed for managing kindergarten branches, students, and their details. It integrates Supabase as the backend service for database management and authentication.
+<img src="https://github.com/user-attachments/assets/8c2bdb39-c2d9-464c-a57c-a644ac2c955c" width="40%" />
 
+_Simple and minimalistic early childhood branch management._
 
-
-https://github.com/user-attachments/assets/76052a5e-b346-4556-91ae-142391d89fe2
-
-
+</div>
 
 ---
 
@@ -14,14 +14,21 @@ https://github.com/user-attachments/assets/76052a5e-b346-4556-91ae-142391d89fe2
 
 Before setting up the project, ensure you have the following installed:
 
-- **Node.js** (v16+)
-- **npm** (or **yarn**) for package management
+- **Node.js** (v20+)
 - **Supabase CLI**
 - **Docker** (for local Supabase setup)
 
 ---
 
 ## Setup Instructions
+
+```bash
+$ npm install
+$ supabase init
+$ supabase start
+$ cp .env.example .env
+$ npm run dev
+```
 
 ### 1. Clone the Repository
 
@@ -84,3 +91,4 @@ The application will be accessible at `http://localhost:3000`.
 ## License
 
 This project is licensed under the MIT License.
+
