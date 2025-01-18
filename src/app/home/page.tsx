@@ -21,17 +21,33 @@ export default async function HomePage({
   const { data: branches } = await supabase.from("branches").select("*");
 
   let students: Tables<"students">[] = [];
+  let branchName = "";
+
   if (branchId) {
-    const { data, error } = await supabase
+    // Fetch students for the branch
+    const { data: studentData, error: studentError } = await supabase
       .from("students")
       .select("*")
       .order("name", { ascending: true })
       .eq("branch_id", Number(branchId));
 
-    if (error) {
-      console.error("Error fetching students:", error);
+    if (studentError) {
+      console.error("Error fetching students:", studentError);
     } else {
-      students = data ?? [];
+      students = studentData ?? [];
+    }
+
+    // Fetch the branch name
+    const { data: branchData, error: branchError } = await supabase
+      .from("branches")
+      .select("name")
+      .eq("id", Number(branchId))
+      .single();
+
+    if (branchError) {
+      console.error("Error fetching branch name:", branchError);
+    } else {
+      branchName = branchData?.name || "";
     }
   }
 
@@ -47,7 +63,7 @@ export default async function HomePage({
       {/* Students Layer */}
       {branchId && (
         <div className="fixed inset-0 w-screen h-screen bg-gray-400/50 backdrop-blur-md flex items-center justify-center">
-          <StudentsLayer branchId={branchId} students={students} />
+          <StudentsLayer branchName={branchName} students={students} />
         </div>
       )}
     </div>

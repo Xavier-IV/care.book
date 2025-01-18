@@ -2,16 +2,11 @@
 
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-
-interface Student {
-  id: number;
-  name: string;
-  age: number;
-  guardian: string;
-}
+import { Tables } from "@/types/database.type";
+import Link from "next/link";
 
 interface StudentListProps {
-  students: Student[];
+  students: Tables<"students">[];
 }
 
 export function StudentList({ students }: StudentListProps) {
@@ -25,7 +20,7 @@ export function StudentList({ students }: StudentListProps) {
       groups[firstLetter].push(student);
       return groups;
     },
-    {} as Record<string, Student[]>,
+    {} as Record<string, Tables<"students">[]>,
   );
 
   // Sort letters alphabetically
@@ -41,14 +36,23 @@ export function StudentList({ students }: StudentListProps) {
             </div>
             <ul className="">
               {groupedStudents[letter].map((student) => (
-                <li key={student.id} className="px-4 py-3 hover:bg-gray-200/50">
-                  <div className="font-medium">{student.name}</div>
-                  <div className="text-sm text-gray-500">
-                    Age: {student.age}
-                  </div>
-                  <div className="text-sm text-gray-500">
-                    Guardian: {student.guardian}
-                  </div>
+                <li
+                  key={student.id}
+                  className="px-4 py-3 hover:bg-gray-200/50 cursor-pointer"
+                >
+                  {/* Link to lanyard page */}
+                  <Link
+                    href={`/student/${student.uuid}`} // Use the student's UUID for the route
+                    className="block"
+                  >
+                    <div className="font-medium">{student.name}</div>
+                    <div className="text-sm text-gray-500">
+                      Age: {student.age} Cust. ID: {student.customer_id}
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      Guardian: {student.guardian}
+                    </div>
+                  </Link>
                 </li>
               ))}
             </ul>

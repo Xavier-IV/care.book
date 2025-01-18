@@ -21,7 +21,11 @@ export default function RootLayout({
         className={`${inter.className} bg-gray-100 min-h-screen flex items-center justify-center`}
       >
         <AuthKitProvider>
-          <main className="w-full max-w-md p-6">{children}</main>
+          <main className="w-full max-w-md p-6">
+            <div className="min-h-screen flex items-center justify-center">
+              {children}
+            </div>
+          </main>
         </AuthKitProvider>
       </body>
     </html>

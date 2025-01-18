@@ -11,17 +11,17 @@ interface Student {
 }
 
 interface StudentsLayerProps {
-  branchId: string;
+  branchName: string;
   students: Student[];
 }
 
-export function StudentsLayer({ branchId, students }: StudentsLayerProps) {
+export function StudentsLayer({ branchName, students }: StudentsLayerProps) {
   return (
     <div className="flex items-center justify-center w-full h-full bg-gray-200/50 backdrop-blur-md p-4">
       <div className="bg-gray-200 rounded-lg shadow-lg max-w-md w-full space-y-4">
         <div className="flex justify-between items-center p-6 pb-0">
           <h2 className="text-xl font-bold text-gray-800">
-            Branch {branchId} Students
+            {branchName} Students
           </h2>
           <button
             className="text-gray-500 hover:text-gray-700"

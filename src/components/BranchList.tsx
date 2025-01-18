@@ -16,7 +16,7 @@ export function BranchList({ branches }: BranchListProps) {
   };
 
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden min-w-[400px]">
       <ul className="divide-y divide-gray-200">
         {branches.map((branch) => (
           <li key={branch.id}>
