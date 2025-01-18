@@ -9,7 +9,6 @@ import {
 export default async function HomePage() {
   const { user } = await withAuth();
   const signInUrl = await getSignInUrl();
-  const signUpUrl = await getSignUpUrl();
 
   if (user) {
     redirect("/home");
@@ -19,12 +18,12 @@ export default async function HomePage() {
     <div className="text-center space-y-4">
       <h1 className="text-2xl font-bold mb-6">Welcome to Tadika Management</h1>
       <p>Please sign in or sign up to continue.</p>
-      <div className="space-x-4">
-        <Link href={signInUrl}>
+      <div className="space-x-4 pt-4">
+        <Link
+          href={signInUrl}
+          className="px-4 py-2 rounded-md bg-black text-white mt-4"
+        >
           <button className="btn-primary">Sign In</button>
-        </Link>
-        <Link href={signUpUrl}>
-          <button className="btn-primary">Sign Up</button>
         </Link>
       </div>
     </div>
